@@ -1,0 +1,31 @@
+body{
+  font-size: 16px;
+}
+.login-area-box, .signup-area-box {
+   margin: auto;
+   text-align: center;
+   background: white;    
+   box-shadow: 2px 2px 7px #888888;
+   margin-bottom: 20px;
+
+}
+
+.guest-button, .guest-form {
+  float: right;
+}
+
+.login-button, .sign-up-button {
+  margin-bottom: 20px;
+}
+
+.medical-images {
+  max-height: 100px;
+  width: auto;
+  margin-left: 35%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.loggedInMessage {
+  color: green;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Med-aid data</title>
+    <meta charset="utf-8" name="Med-aid data" content="Med-aid data">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <!-- styles -->
+    <link href="bootstrap_css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+
+<body>
+    <div class="logo_top logo_row">
+        <img class="logo" src="logo.png" alt="Med-aid logo">
+        <form name="demo-form" class="guest-form" action="/users/verified" method='post'>
+            <div class="row">
+                <button type="submit" class="guest-button">Guest user</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 left">
+                <p>
+                    Med-aid offers a convenient way to record medical history for you and your family.
+                </p>
+
+                <img class="medical-images" src="images/stethoscope.png" alt="stethoscope">
+
+                <p>
+                    <h2>Customize to your needs</h2>
+                    Maintaining a detailed log of your blood sugar readings with diabetic medications, pain management or pediatric ailments
+                    - you can now create an accurate record history to present at your next doctor's visit.
+                </p>
+                <img class="medical-images" src="images/doctor.png" alt="doctor">
+
+            </div>
+
+            <div class="col-md-6 right">
+                <div class="login-area-box">
+                    <form class="login-form" action="/users/token" method="post" autocomplete="off">
+                        <p> <input type="text" class="blank existing-user" name="username" placeholder="Username" required/></p>
+                        <p> <input type="password" class="blank existing-user-pwd" name="password" placeholder="Password" required/></p>
+                        <button type="submit" class="login-button">Login</button>
+                    </form>
+                </div>
+                <div class="signup-area-box">
+                    <form class="register" action="/users" method="post" autocomplete="off">
+                        <p> <input type="text" class="blank firstName" name="firstName" placeholder="First Name" required/></p>
+                        <p> <input type="text" class="blank lastName" name="lastName" placeholder="Last Name" required/></p>
+                        <p> <input type="text" class="blank username" name="username" placeholder="Username" required/></p>
+                        <p> <input type="password" class="blank password" name="password" placeholder="Password" required/></p>
+                        <button type="submit" class="sign-up-button">Sign up</button>
+                    </form>
+                </div>
+                <div class="error-message">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    
+
+</body>
+
+</html>

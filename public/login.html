@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Med-aid Login</title>
+    <meta charset="utf-8" name="Med-aid Login" content="Med-aid Login">
+
+    <!-- fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <div class="login_area">
+        <div class="logo_position">
+            <img class="logo" src="logo.png" alt="Med-aid logo">
+        </div>
+        <form action="/signup/" method='post'>
+
+            <h5>Sign In</h5>
+
+            <fieldset name="sign_in">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" name="user_id" type="text" id="user_id" required>
+                    <label class="mdl-textfield__label" for="user_id">User Id</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" name="password" type="password" id="password" required>
+                    <label class="mdl-textfield__label" for="password">Password</label>
+                </div>
+
+            </fieldset>
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <div class="forgot_pwd">
+            <p>
+                <a href="/forgot-password-new">Forgot Password?</a>
+            </p>
+        </div>
+
+    </div>
+</body>
+
+</html>

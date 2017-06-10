@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Med-aid data</title>
+    <meta charset="utf-8" name="Med-aid data" content="Med-aid data">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <!-- styles -->
+    <link href="bootstrap_css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="logo_top logo_row">
+        <img class="logo" src="logo.png" alt="Med-aid logo">
+    </div>
+    <div class="container">
+
+        <div class="content-area">
+            <div class="input-patient">
+                <form name="js-patient-form" action="" method='post'>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div>
+                                    <input type="text" class="blank patient" name="patient" type="text" id="patient" placeholder="Patient's name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <input type="text" class="blank doctor" name="doctor" type="text" id="doctor" placeholder="Doctor">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <input type="text" class="blank contact" name="contact" type="text" id="contact" placeholder="Doctor's contact">
+                                </div>
+                            </div>
+                        </div>
+                </form>
+                <div class="row">
+                    <button type="submit" class="js-add-entry-btn">Add new patient</button>
+                </div>
+
+            </div>
+
+            <div class="row header-row">
+                <div class="col-md-3">Patient</div>
+                <div class="col-md-3">Doctor</div>
+                <div class="col-md-3">Doctor's contact</div>
+            </div>
+            <div class="js-patient-output">
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="client.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+body {
+	box-sizing: border-box;
+	background-color: #F8F8F8;
+}
+
+.logo_top {
+    margin-bottom:20px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+}
+
+.logo_position {
+    position: relative;
+    left: 35%;
+    margin-top: 10%;
+}
+
+.logo{
+	height:65px;
+	width:auto;
+    margin-top: 10px;
+}
+
+.login_area {
+	height: 450px;
+	width: 400px;
+	background-color: white;
+	position: relative;
+	left: 35%;
+	margin-top:15px;
+}
+
+/*fieldset {
+    border: 0px;
+    margin-top: 12px;
+    margin-left: 33px;
+    padding: 12px 10px 5px;
+    
+}*/
+
+h5{
+    /*font-size: 2em;*/
+    padding-top: 20px;
+    margin-left: 145px;
+    font-weight: lighter;
+    color: grey;
+}
+
+button, input {   
+    /*clear: left;*/
+    /*padding: 15px;*/
+    /*border: 2px solid lightgrey;*/
+    max-width: 150px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/*input {
+    border: 2px solid lightgrey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    background-color: #f4f5f7;
+    width: 286px;
+}*/
+
+button {
+    background: rgba(213, 0, 0, 0.53);
+    border: rgba(213, 0, 0, 0.53);
+    border-radius: 3px;
+    color: white;
+    margin-left: 36px;
+    margin-right: 36px;
+    width: 300px;
+    margin-bottom: 10px;
+    display: inline-block;
+    /*margin-left: 50px;*/
+}
+
+button:hover{
+	background-color: #595b5b;
+}
+/*.existing_user {
+    color: grey;
+    position: relative;
+    left: 23%;
+}
+.existing_user > p > a{
+	color: grey;
+    text-decoration: none;
+}
+.forgot_pwd {
+	    margin-left: 150px;
+}
+.login_area > .forgot_pwd > p > a{
+	color: grey;
+    text-decoration: none;
+}
+.existing_user > p {
+font-weight: lighter;
+}*/
+.js-entry-output{
+    display: none;
+    /*border: 1px orangered solid;*/
+    margin: auto;
+}
+
+.active {
+    display: block;
+}
+.add_button {
+ margin-left:117px;
+ width:300px;
+ margin-top: 40px;
+}
+
+.entry_style {
+ background:white;
+ color: grey;
+ padding: 25px;
+ box-shadow: 2px 2px 7px #888888;
+ display: inline-block;
+}
+
+.content-area{
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom:20px;
+    padding-left:10px;
+    padding-right: 10px;
+    max-width: 950px;
+}
+
+.patient-row {
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /*margin-bottom: 10px;*/
+    color:grey;
+    cursor: pointer;
+    box-shadow: 2px 2px 7px #888888;
+}
+
+.patient-row:hover{
+    background-color: lightyellow;
+}
+
+.header-row{
+    font-size: 17px;
+    background-color: steelblue;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 7px #888888;
+}
+.row.header-row, .row.patient-row {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.js-patient-controls{
+    display: inline;
+}
+.js-add-history, .js-save {
+    float: right;
+}
+button.js-delete, button.js-update {
+    float: none;
+    margin-right: 5px;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding:3px;
+    width: 70px;
+}
+.container{
+    max-width:981px;
+    position: relative;
+    top: 100px;
+    margin: auto;
+}
+
+.input-patient {
+    margin-top:15px;
+    margin-bottom:15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:18px;
+    background-color: white;
+    color: grey;
+    box-shadow: 2px 2px 7px #888888;
+    /*font-weight: lighter;*/
+}
+
+.blank {
+    background-color: transparent;
+    color: #c78181;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #eeeeee 1px;
+    padding: 3px 10px;
+}
+
+.history-row {
+    color: saddlebrown;
+    border: 0.5px solid #F7E9E6;
+    margin: auto;
+    border-radius: 2px;
+    background-color: #F8F8F8;
+    box-shadow: 3px 1px 0 rgb(150, 150, 150);
+}
+
+.logo_row{
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    z-index: 999;
+    background: white;
+    box-shadow: 10px -1px 20px rgba(50,50,50,.95);
+}
+
