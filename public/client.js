@@ -117,8 +117,15 @@ $(".js-add-entry-btn").click(function (event) {
 
 
 function getAndDisplayPatientList() {
-  $.getJSON('/patients', function (items) {
+let token = Cookies.get('token');
+  $.ajax({
+    url:'/patients',
+    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
+    dataType: "json",
+    success: function (items) {
     console.log('Rendering patient list');
+    
+
     let itemElements = items.patients.map(function (item) {
       let element = $(patientItemTemplate(item.patient_id));
       // element.attr('id', item.patient_id);
@@ -158,8 +165,10 @@ function getAndDisplayPatientList() {
     });
 
     $('.js-patient-output').append(itemElements);
+    }
   });
 }
+
 //add medical record make post request
 $("body").on("click", ".js-save", function (event) {
   let retrieveID = $(this).parents(".patient-row").data("id");

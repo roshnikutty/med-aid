@@ -5,16 +5,15 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const cfg = require('./config');
+const {User} = require('./users/models');
 
 var JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 var opts = {}
-opts.tokenBodyField = "id";
 opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
 opts.secretOrKey = cfg.JWT.jwtSecret;
-opts.issuer = "localhost";
-opts.audience = "localhost";
-passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+
+passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     console.log(jwt_payload);
     
     User.findOne({id: jwt_payload.sub}, function(err, user) {
@@ -39,6 +38,7 @@ const { Patient, History } = require('./models');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
 //logging and passport
 app.use(morgan('common'));

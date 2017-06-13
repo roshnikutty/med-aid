@@ -4,20 +4,20 @@ const jsonParser = require('body-parser').json();
 const passport = require('passport');
 const cfg = require('../config');
 var jwt = require("jwt-simple");
-var auth = require("./auth.js")();
+// var auth = require("./auth.js")();
 var users = require("./users.js");
 const { User } = require('./models');
 
 const router = express.Router();
 
 router.use(jsonParser);
-router.use(passport.initialize());
-router.use(auth.initialize());
+// router.use(passport.initialize());
+// router.use(auth.initialize());
 
 
-router.get("/", auth.authenticate(), function (req, res) {
-  res.json(users[req.user.id]);
-});
+// router.get("/", auth.authenticate(), function (req, res) {
+//   res.json(users[req.user.id]);
+// });
 
 router.post("/token", function (req, res) {
   console.log(req.body);
