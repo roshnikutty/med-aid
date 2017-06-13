@@ -74,7 +74,7 @@ app.get('/patients/:id', (req, res) => {
 });
 
 //Create a new patient's entry
-app.post('/patients', (req, res) => {
+app.post('/patients', passport.authenticate("jwt", {session: false}), (req, res) => {
     const requiredField = 'patient';
     if (!(requiredField in req.body)) {
         const message = `Missing \`${requiredField}\` name in request body`;
@@ -95,24 +95,27 @@ app.post('/patients', (req, res) => {
             console.log(err);
             res.status(500).json({ message: "Internal server error" });
         });
+        console.log("authenticated Post new patient");
 });
 
 //Update the patient's entry
-app.put('/patients/:id', (req, res) => {
+app.put('/patients/:id', passport.authenticate("jwt", {session: false}), (req, res) => {
     Patient
         .findByIdAndUpdate(req.params.id, { $set: req.body })
         .exec()
         .then(patient => res.status(204).end())
         .catch(err => res.status(400).json({ message: 'Internal server error' }));
+    console.log("authenticated PUT to update a patient.");
 });
 
 //Delete the patient's entry
-app.delete('/patients/:id', (req, res) => {
+app.delete('/patients/:id', passport.authenticate("jwt", {session: false}), (req, res) => {
     Patient
         .findByIdAndRemove(req.params.id)
         .exec()
         .then(blog => res.status(204).end())
         .catch(err => res.status(500).json({ message: 'Internal server error' }));
+    console.log("authenticated DELETE to delete a patient.");
 });
 
 //Getting the entire history of a patient

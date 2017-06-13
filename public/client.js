@@ -125,7 +125,6 @@ let token = Cookies.get('token');
     success: function (items) {
     console.log('Rendering patient list');
     
-
     let itemElements = items.patients.map(function (item) {
       let element = $(patientItemTemplate(item.patient_id));
       // element.attr('id', item.patient_id);
@@ -185,9 +184,11 @@ $("body").on("click", ".js-save", function (event) {
 
 
 function addPatient(newPatient) {
+  let token = Cookies.get('token');
   $.ajax({
     method: "POST",
     url: "/patients",
+    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
     contentType: "application/json",                                  //content input is in json format
     data: JSON.stringify(newPatient),
     dataType: "json",                                                 //datatype from server output is in json format
@@ -201,9 +202,11 @@ function addPatient(newPatient) {
 
 
 function updatePatientEntry(updatedPatient, patient_id) {
+  let token = Cookies.get('token');
   $.ajax({
     method: "PUT",
     url: "/patients/" + patient_id,
+    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
     contentType: "application/json",
     data: JSON.stringify(updatedPatient),
     dataType: "json",
@@ -216,8 +219,10 @@ function updatePatientEntry(updatedPatient, patient_id) {
 }
 
 function deletePatientEntry(patientId) {
+  let token = Cookies.get('token');
   $.ajax({
     url: "/patients/" + patientId,
+    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
     method: "DELETE",
     data: {},
     contentType: 'application/json',
