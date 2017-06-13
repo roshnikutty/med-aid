@@ -1,24 +1,24 @@
 function patientItemTemplate(id) {
   return `<div data-id="${id}"  class="row patient-row">` +
-             '<div class = "col-md-12">' +
-                '<div class = "row selectable"> ' 
-                    +'<div class="col-md-3 js-patient"></div>' +
-                     '<div class="col-md-3 js-doctor"></div>' +
-                     '<div class="col-md-3 js-contact"></div>' +
-                     '<div class="col-md-3 js-patient-controls">' +
-                          '<div><button class="js-update"> Update patient' +
-                          '</button>' +
-                          '<button class="js-delete">' +
-                          '<span class="button-label">Delete patient</span>' +
-                          '</button></div>' +
-                      '</div>' +
-                    '<button class="js-add-history">' +
-                        '<span class="button-label">Add record</span>' +
-                    '</button>' +
-               '</div>' +
-            '<div class="row js-entry-output">' +
-            '</div>' +
-          '</div>'
+    '<div class = "col-md-12">' +
+    '<div class = "row selectable"> '
+    + '<div class="col-md-3 js-patient"></div>' +
+    '<div class="col-md-3 js-doctor"></div>' +
+    '<div class="col-md-3 js-contact"></div>' +
+    '<div class="col-md-3 js-patient-controls">' +
+    '<div><button class="js-update"> Update patient' +
+    '</button>' +
+    '<button class="js-delete">' +
+    '<span class="button-label">Delete patient</span>' +
+    '</button></div>' +
+    '</div>' +
+    '<button class="js-add-history">' +
+    '<span class="button-label">Add record</span>' +
+    '</button>' +
+    '</div>' +
+    '<div class="row js-entry-output">' +
+    '</div>' +
+    '</div>'
     + '</div>'
 }
 let newMedRecordTemplate = (
@@ -117,53 +117,53 @@ $(".js-add-entry-btn").click(function (event) {
 
 
 function getAndDisplayPatientList() {
-let token = Cookies.get('token');
+  let token = Cookies.get('token');
   $.ajax({
-    url:'/patients',
-    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
+    url: '/patients',
+    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
     dataType: "json",
     success: function (items) {
-    console.log('Rendering patient list');
-    
-    let itemElements = items.patients.map(function (item) {
-      let element = $(patientItemTemplate(item.patient_id));
-      // element.attr('id', item.patient_id);
-      element.find('.js-patient').text(item.patient);
-      element.find('.js-doctor').text(item.doctor);
-      element.find('.js-contact').text(item.contact);
+      console.log('Rendering patient list');
 
-      //Update Patient button function
-      element.find('.js-update').click((event) => {
-        $(event.target).closest('.patient-row').append(updatePatientTemplate);
-        $(event.target).closest('.js-patient-controls').siblings('.js-add-history').hide();
-        $(event.target).closest('.js-patient-controls').hide();
-        //Clicking Save-Updates
-        $(".js-patient-output").on("click", ".js-save-update", function (event) {
-          //get updated patient data from form into an object
-          event.preventDefault();
-          let updatedPatient = {
-            patient: $(".update-patient").val(),
-            doctor: $(".update-doctor").val(),
-            contact: $(".update-contact").val()
-          };
-          updatePatientEntry(updatedPatient, item.patient_id);
+      let itemElements = items.patients.map(function (item) {
+        let element = $(patientItemTemplate(item.patient_id));
+        // element.attr('id', item.patient_id);
+        element.find('.js-patient').text(item.patient);
+        element.find('.js-doctor').text(item.doctor);
+        element.find('.js-contact').text(item.contact);
+
+        //Update Patient button function
+        element.find('.js-update').click((event) => {
+          $(event.target).closest('.patient-row').append(updatePatientTemplate);
+          $(event.target).closest('.js-patient-controls').siblings('.js-add-history').hide();
+          $(event.target).closest('.js-patient-controls').hide();
+          //Clicking Save-Updates
+          $(".js-patient-output").on("click", ".js-save-update", function (event) {
+            //get updated patient data from form into an object
+            event.preventDefault();
+            let updatedPatient = {
+              patient: $(".update-patient").val(),
+              doctor: $(".update-doctor").val(),
+              contact: $(".update-contact").val()
+            };
+            updatePatientEntry(updatedPatient, item.patient_id);
+            $('.js-patient-output').empty();
+            getAndDisplayPatientList();
+          });
+        });
+
+        //Delete Patient button function
+        element.find('.js-delete').click((event) => {
+          console.log(`Deleting selected patient: ${item.patient}`);
+          deletePatientEntry(item.patient_id);
           $('.js-patient-output').empty();
           getAndDisplayPatientList();
         });
+
+        return element;
       });
 
-      //Delete Patient button function
-      element.find('.js-delete').click((event) => {
-        console.log(`Deleting selected patient: ${item.patient}`);
-        deletePatientEntry(item.patient_id);
-        $('.js-patient-output').empty();
-        getAndDisplayPatientList();
-      });
-
-      return element;
-    });
-
-    $('.js-patient-output').append(itemElements);
+      $('.js-patient-output').append(itemElements);
     }
   });
 }
@@ -188,7 +188,7 @@ function addPatient(newPatient) {
   $.ajax({
     method: "POST",
     url: "/patients",
-    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
+    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
     contentType: "application/json",                                  //content input is in json format
     data: JSON.stringify(newPatient),
     dataType: "json",                                                 //datatype from server output is in json format
@@ -206,7 +206,7 @@ function updatePatientEntry(updatedPatient, patient_id) {
   $.ajax({
     method: "PUT",
     url: "/patients/" + patient_id,
-    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
+    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
     contentType: "application/json",
     data: JSON.stringify(updatedPatient),
     dataType: "json",
@@ -222,7 +222,7 @@ function deletePatientEntry(patientId) {
   let token = Cookies.get('token');
   $.ajax({
     url: "/patients/" + patientId,
-    beforeSend: (req) => {req.setRequestHeader("Authorization", `JWT ${token}`)},
+    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
     method: "DELETE",
     data: {},
     contentType: 'application/json',
@@ -235,10 +235,12 @@ function deletePatientEntry(patientId) {
 
 
 function addHistory(newHistory, patient_id) {
-  console.log(newHistory);
+  // console.log(newHistory);
+  let token = Cookies.get('token');
   $.ajax({
     method: "POST",
     url: "/patients/" + patient_id + "/histories",
+    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
     contentType: "application/json",                                  //content input is in json format
     data: JSON.stringify(newHistory),
     dataType: "json",                                                 //datatype from server output is in json format
@@ -268,15 +270,23 @@ $(".js-patient-output").on("click", ".selectable", function () {
     getAndDisplayPatientHistory(retrieveID, $(event.target));
   }
 });
+
 let historyState;
+
 function getAndDisplayPatientHistory(patientsId, patientRow) {
-  let url = `/patients/${patientsId}/histories`
-  $.getJSON(url, function (items) {
-    console.log('Rendering history list');
-    console.log(items);
-    historyState = items;
-    render();
-  });
+  let token = Cookies.get('token');
+  $.ajax(
+    {
+      url: `/patients/${patientsId}/histories`,
+      beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
+      dataType: "json",
+      success: function (items) {
+        console.log('Rendering history list');
+        console.log(items);
+        historyState = items;
+        render();
+      }
+    });
 }
 
 //Delete medical record
@@ -288,9 +298,11 @@ $(".js-patient-output").on("click", ".js-history-delete", function () {
 });
 
 function deleteHistory(patientID, historyID) {
+  let token = Cookies.get('token');
   $.ajax({
-    url: `/patients/${patientID}/${historyID}`,
     method: "DELETE",
+    url: `/patients/${patientID}/${historyID}`,
+    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
     contentType: 'application/json',
     dataType: 'text',
     success: function (data) {

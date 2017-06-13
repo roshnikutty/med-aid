@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const cfg = require('./config');
-const {User} = require('./users/models');
+const { User } = require('./users/models');
 
 var JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -15,8 +15,8 @@ opts.secretOrKey = cfg.JWT.jwtSecret;
 
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     console.log(jwt_payload);
-    
-    User.findOne({id: jwt_payload.sub}, function(err, user) {
+
+    User.findOne({ id: jwt_payload.sub }, function (err, user) {
         if (err) {
             return done(err, false);
         }
@@ -29,7 +29,7 @@ passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     });
 }));
 
-const {usersRouter} = require('./users');
+const { usersRouter } = require('./users');
 
 mongoose.Promise = global.Promise;
 
@@ -47,7 +47,7 @@ app.use('/users', usersRouter);
 
 
 //Return a list of all existing patients
-app.get('/patients', passport.authenticate("jwt", {session: false}), (req, res) => {
+app.get('/patients', passport.authenticate("jwt", { session: false }), (req, res) => {
     Patient
         .find()
         .exec()
@@ -74,7 +74,7 @@ app.get('/patients/:id', (req, res) => {
 });
 
 //Create a new patient's entry
-app.post('/patients', passport.authenticate("jwt", {session: false}), (req, res) => {
+app.post('/patients', passport.authenticate("jwt", { session: false }), (req, res) => {
     const requiredField = 'patient';
     if (!(requiredField in req.body)) {
         const message = `Missing \`${requiredField}\` name in request body`;
@@ -95,11 +95,11 @@ app.post('/patients', passport.authenticate("jwt", {session: false}), (req, res)
             console.log(err);
             res.status(500).json({ message: "Internal server error" });
         });
-        console.log("authenticated Post new patient");
+    console.log("authenticated Post new patient");
 });
 
 //Update the patient's entry
-app.put('/patients/:id', passport.authenticate("jwt", {session: false}), (req, res) => {
+app.put('/patients/:id', passport.authenticate("jwt", { session: false }), (req, res) => {
     Patient
         .findByIdAndUpdate(req.params.id, { $set: req.body })
         .exec()
@@ -109,7 +109,7 @@ app.put('/patients/:id', passport.authenticate("jwt", {session: false}), (req, r
 });
 
 //Delete the patient's entry
-app.delete('/patients/:id', passport.authenticate("jwt", {session: false}), (req, res) => {
+app.delete('/patients/:id', passport.authenticate("jwt", { session: false }), (req, res) => {
     Patient
         .findByIdAndRemove(req.params.id)
         .exec()
@@ -119,55 +119,58 @@ app.delete('/patients/:id', passport.authenticate("jwt", {session: false}), (req
 });
 
 //Getting the entire history of a patient
-app.get('/patients/:patient_id/histories', (req, res) => {
-    Patient
-        .findById(req.params.patient_id)
-        .exec()
-        .then(patient => res.json({ history: patient.history.map(history => history) }))
-        // .then(patient => res.send(patient.history))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ message: "Internal server error" });
-        });
-});
+app.get('/patients/:patient_id/histories', (passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        Patient
+            .findById(req.params.patient_id)
+            .exec()
+            .then(patient => res.json({ history: patient.history.map(history => history) }))
+            // .then(patient => res.send(patient.history))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ message: "Internal server error" });
+            });
+        console.log("authenticated GET for patient's history");
+    })
+);
 
 //Create a new entry in the patient's illness history
-app.post('/patients/:patient_id/histories', (req, res) => {
-
-    //Checking to make sure that all the required fields are entered to create a history
-    const requiredField = ['date_time', 'symptoms'];
-    for (let i = 0; i < requiredField.length; i++) {
-        const field = requiredField[i];
-        if (!(field in req.body)) {
-            const message = `Missing ${field} field in request body`;
-            console.error(message);
-            return res.status(400).send(message);
+app.post('/patients/:patient_id/histories', (passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        //Checking to make sure that all the required fields are entered to create a history
+        const requiredField = ['date_time', 'symptoms'];
+        for (let i = 0; i < requiredField.length; i++) {
+            const field = requiredField[i];
+            if (!(field in req.body)) {
+                const message = `Missing ${field} field in request body`;
+                console.error(message);
+                return res.status(400).send(message);
+            }
         }
-    }
-
-    //Finding a specific patient by id, and then creating a medical history document
-    Patient
-        .findById(req.params.patient_id)
-        .populate({ path: 'history' })
-        .then(patient => {
-            patient.history.push({
-                date_time: req.body.date_time,
-                symptoms: req.body.symptoms,
-                meds: req.body.meds
+        //Finding a specific patient by id, and then creating a medical history document
+        Patient
+            .findById(req.params.patient_id)
+            .populate({ path: 'history' })
+            .then(patient => {
+                patient.history.push({
+                    date_time: req.body.date_time,
+                    symptoms: req.body.symptoms,
+                    meds: req.body.meds
+                })
+                patient.save()
+                    .then(patient => res.status(201).json(patient.history))
+                    .catch(err => {
+                        console.log(err);
+                        res.status(500).json({ message: "inner post catch: Internal server error" });
+                    });
             })
-            patient.save()
-                .then(patient => res.status(201).json(patient.history))
-                .catch(err => {
-                    console.log(err);
-                    res.status(500).json({ message: "inner post catch: Internal server error" });
-                });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ message: "outer post catch: Internal server error" });
-        });
-
-});
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ message: "outer post catch: Internal server error" });
+            });
+        console.log("Authenticated add medical history for a patient");
+    })
+);
 
 //Update entry in the patient's illness history
 app.put('/patients/:patient_id/:histories_id', (req, res) => {
@@ -191,25 +194,28 @@ app.put('/patients/:patient_id/:histories_id', (req, res) => {
 });
 
 //Delete entry in the patient's illness history
-app.delete('/patients/:patient_id/:history_id', (req, res) => {
-    Patient
-        .findById(req.params.patient_id)
-        .exec()
-        .then(patient => {
-            let arr = patient.history;
-            //check if the history id in the url matches any of the ids of history objects in patients.history array
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i]._id == req.params.history_id) {               
-                    arr.splice(i, 1);
+app.delete('/patients/:patient_id/:history_id', (passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        Patient
+            .findById(req.params.patient_id)
+            .exec()
+            .then(patient => {
+                let arr = patient.history;
+                //check if the history id in the url matches any of the ids of history objects in patients.history array
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i]._id == req.params.history_id) {
+                        arr.splice(i, 1);
+                    }
+                    patient.history = arr;
                 }
-                patient.history = arr;
-            }
-            patient.save()
-                .then(() => res.status(200).json({ message: 'Patient\'s selected history item is now deleted!' }))
-                .catch(err => res.status(400).json({ message: err.message }))
-        })
-        .catch(err => res.status(400).json({ message: err.message }))
-});
+                patient.save()
+                    .then(() => res.status(200).json({ message: 'Patient\'s selected history item is now deleted!' }))
+                    .catch(err => res.status(400).json({ message: err.message }))
+            })
+            .catch(err => res.status(400).json({ message: err.message }));
+        console.log("Authenticated DELETE patient's medical history");
+    })
+);
 
 
 //To deal with any other path, return a 404-error
@@ -220,7 +226,7 @@ app.use('*', function (req, res) {
 
 let server;
 
-function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+function runServer(databaseUrl = DATABASE_URL, port = PORT) {
     return new Promise((resolve, reject) => {
         mongoose.connect(databaseUrl, err => {
             if (err) {
