@@ -2,11 +2,14 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
+var jwt = require("jwt-simple");
+const cfg = require('../config');
 
 const should = chai.should();
 const { app, runServer, closeServer } = require('../server');
 const { Patient, History } = require('../models');
 const { TEST_DATABASE_URL } = require('../config');
+const { User } = require('../users/models');
 
 chai.use(chaiHttp);
 
@@ -65,9 +68,30 @@ function generateHistoryData() {
     }
 }
 
+
+function tokenHeader() {
+    return new User({
+        firstName: "Test FirstName",
+        lastName: "Test LastName",
+        username: "testuser",
+        password: "testpassword"
+    })
+        .save()
+        .then(user => `JWT ${jwt.encode({ id: user.id }, cfg.JWT.jwtSecret)}`);
+}
+
 describe('Patients API resource', function () {
 
     before(function () {
+        let user = new User({
+            firstName: "Test FirstName",
+            lastName: "Test LastName",
+            username: "testuser",
+            password: "testpassword"
+        });
+        user.save()
+        // .then(() => token = jwt.encode({id: user.id}, cfg.JWT.jwtSecret));  //generating token for the test user
+
         return runServer(TEST_DATABASE_URL);
     });
 
@@ -85,18 +109,23 @@ describe('Patients API resource', function () {
 
     describe('GET patient endpoint', function () {
         it('should return all existing patients', function () {
-            let res
-            return chai.request(app)
-                .get('/patients')
-                .then(function (response) {
-                    res = response;
-                    res.should.have.status(200);
-                    res.body.patients.should.have.length.of.at.least(1);
-                    return Patient.count();
+            let res;
+            tokenHeader()
+                .then((token) => {
+                    return chai.request(app)
+                        .get('/patients')
+                        .set('Authorization', token)
+                        .then(function (response) {
+                            res = response;
+                            res.should.have.status(200);
+                            res.body.patients.should.have.length.of.at.least(1);
+                            return Patient.count();
+                        })
+                        .then(function (count) {
+                            res.body.patients.should.have.length.of(count);
+                        })
                 })
-                .then(function (count) {
-                    res.body.patients.should.have.length.of(count);
-                })
+            // console.log(tokenHeader(token));
         });
 
         it('should return patients with the right fields', function () {

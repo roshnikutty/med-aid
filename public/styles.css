@@ -30,14 +30,6 @@ body {
 	margin-top:15px;
 }
 
-/*fieldset {
-    border: 0px;
-    margin-top: 12px;
-    margin-left: 33px;
-    padding: 12px 10px 5px;
-    
-}*/
-
 h5{
     /*font-size: 2em;*/
     padding-top: 20px;
@@ -80,25 +72,7 @@ button {
 button:hover{
 	background-color: #595b5b;
 }
-/*.existing_user {
-    color: grey;
-    position: relative;
-    left: 23%;
-}
-.existing_user > p > a{
-	color: grey;
-    text-decoration: none;
-}
-.forgot_pwd {
-	    margin-left: 150px;
-}
-.login_area > .forgot_pwd > p > a{
-	color: grey;
-    text-decoration: none;
-}
-.existing_user > p {
-font-weight: lighter;
-}*/
+
 .js-entry-output{
     display: none;
     /*border: 1px orangered solid;*/
@@ -190,7 +164,6 @@ button.js-delete, button.js-update {
     background-color: white;
     color: grey;
     box-shadow: 2px 2px 7px #888888;
-    /*font-weight: lighter;*/
 }
 
 .blank {
@@ -222,4 +195,23 @@ button.js-delete, button.js-update {
     background: white;
     box-shadow: 10px -1px 20px rgba(50,50,50,.95);
 }
+.row-label{
+    display: none;
+}
 
+@media only screen and (max-width: 992px) {
+    .header-row {
+        display:none;
+    }
+
+    .patient-row, .input-patient {
+        max-width:85%;
+        text-align: center;
+    }
+
+    .js-patient.row-label{
+        display: block;
+        color: steelblue;
+        font-weight: bold;
+    }
+}

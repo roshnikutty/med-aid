@@ -2,9 +2,9 @@ function patientItemTemplate(id) {
   return `<div data-id="${id}"  class="row patient-row">` +
     '<div class = "col-md-12">' +
     '<div class = "row selectable"> '
-    + '<div class="col-md-3 js-patient"></div>' +
-    '<div class="col-md-3 js-doctor"></div>' +
-    '<div class="col-md-3 js-contact"></div>' +
+    + '<div class="col-md-3 js-patient"><span class = "row-label">Patient </span></div>' +
+    '<div class="col-md-3 js-doctor"><span class = "row-label">Doctor </span></div>' +
+    '<div class="col-md-3 js-contact"><span class = "row-label">Contact </span></div>' +
     '<div class="col-md-3 js-patient-controls">' +
     '<div><button class="js-update"> Update patient' +
     '</button>' +
@@ -110,7 +110,8 @@ function addHistoryItem(date_time, symptoms, meds) {
 $(".js-add-entry-btn").click(function (event) {
   event.preventDefault();
   addItem($(".patient").val(), $(".doctor").val(), $(".contact").val());  //add form input to state[]
-  addPatient(state[0]);                         //new patient's info is sent on a POST req. to server
+  console.log(state);
+  addPatient(state.slice(-1)[0]);                         //new patient's info is sent on a POST req. to server
   $(".add_entry_btn").hide();
   $('form[name = "js-patient-form"]')[0].reset();
 });
