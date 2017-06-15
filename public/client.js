@@ -330,6 +330,9 @@ function render() {
     element.find('.js-history-date_time').text(item.date_time);
     element.find('.js-history-symptoms').text(item.symptoms);
     element.find('.js-history-meds').text(item.meds);
+    element.find('.js-history-date_time').prepend("<span class = 'row-label'>Date, Time </span>");
+    element.find('.js-history-symptoms').prepend("<span class = 'row-label'>Symptoms </span>");
+    element.find('.js-history-meds').prepend("<span class = 'row-label'>Medication </span>");
     table.append(element);
 
   });
