@@ -16,7 +16,7 @@ It is a start to solve this by providing a place to
 ## How do you sign in/sign up?
 * To set up an account, sign up through the homepage.
 * To check it out without creating an account, sign in as a guest user using
->> Username: demo, Password: demo
+>> __Username__ demo, __Password__ demo
 
 
 ## Using the App
@@ -62,7 +62,7 @@ This adds a row with your input to the table below the form, see below.
   <li>Node.js + Express.js (web server)</li>
   <li>MongoDB (database)</li>
   <li>Mocha + Chai (testing)</li>
-  <li>Continuous integration and deployment with Travis CI - View the <a href = "https://travis-ci.org/roshnikutty/med-aid">build status</a> below</li>
+  <li>Continuous integration and deployment with Travis CI - View the <a href = "https://travis-ci.org/roshnikutty/med-aid">Travis CI build status for this app</a>.</li>
 
 </ul>
 <h3>Responsive</h3>
@@ -71,9 +71,9 @@ This adds a row with your input to the table below the form, see below.
 </ul>
 <h3>Security</h3>
 <ul>
-  <li>User passwords are encrypted using <a href="https://github.com/dcodeIO/bcrypt.js">bcrypt.js</a>.</li>
+  <li>User passwords are encrypted using bcrypt.js.</li>
   <li>
-  JWT (<a href = "https://www.npmjs.com/package/passport-jwt">JSON Web Token</a>) is the <a href="http://passportjs.org/">Passport</a> strategy used to authenticate and provide access to authorized users.</li>
+  JWT (<a href = "https://www.npmjs.com/package/passport-jwt">JSON Web Token</a>) is the Passport strategy I used to authenticate and provide access to authorized users.</li>
 </ul>
 
 
