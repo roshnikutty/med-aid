@@ -76,8 +76,8 @@ This adds a row with your input to the table below the form, see below.
 <ul>
   <li>Node.js + Express.js (web server)</li>
   <li>MongoDB (database)</li>
-  <li><a href="https://mochajs.org/">Mocha</a> + <a href="http://chaijs.com/">Chai</a> (testing)</li>
-  <li>Continuous integration and deployment with <a href="https://travis-ci.org/">Travis CI</a></li>
+  <li><a href="https://mochajs.org/" target="_blank">Mocha</a> + <a href="http://chaijs.com/" target="_blank">Chai</a> (testing)</li>
+  <li>Continuous integration and deployment with <a href="https://travis-ci.org/" target="_blank">Travis CI</a></li>
 </ul>
 <h3>Responsive</h3>
 <ul>
@@ -85,7 +85,7 @@ This adds a row with your input to the table below the form, see below.
 </ul>
 <h3>Security</h3>
 <ul>
-  <li>User passwords are encrypted using <a href="https://github.com/dcodeIO/bcrypt.js">bcrypt.js</a>.</li>
+  <li>User passwords are encrypted using <a href="https://github.com/dcodeIO/bcrypt.js" target="_blank">bcrypt.js</a>.</li>
   <li>
-  JWT (<a href = "https://www.npmjs.com/package/passport-jwt">JSON Web Token</a>) is the <a href="http://passportjs.org/">Passport</a> strategy used to authenticate and provide access to authorized users.</li>
+  JWT (<a href = "https://www.npmjs.com/package/passport-jwt" target="_blank">JSON Web Token</a>) is the <a href="http://passportjs.org/" target="_blank">Passport</a> strategy used to authenticate and provide access to authorized users.</li>
 </ul>
