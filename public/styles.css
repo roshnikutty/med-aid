@@ -196,6 +196,10 @@ button.js-delete, button.js-update {
     width: 20px;
 }
 
+.guest {
+    color: rgba(213, 0, 0, 0.53);
+    padding-top: 10px;
+}
 @media only screen and (max-width: 992px) {
     .header-row {
         display:none;

@@ -12,27 +12,12 @@ It is a start to solve this by providing a place to
 * add in your patients with their doctor and doctor's contact information. 
 * for each patient, keep a log of symptoms and medication.
 
-## Steps to run locally
-### Install
-```
->   git clone https://github.com/roshnikutty/med-aid.git
->   cd med-aid
->   npm install
-```
-### Launch
-```
->   npm start
-```
-Then open [`localhost:8000`](http://localhost:8000) in a browser.
-
-### Test
-```
->   npm run test
-```
 
 ## How do you sign in/sign up?
-* If you don't have an account, sign up through the homepage.
-* To check it out without creating an account, sign in as a guest user.
+* To set up an account, sign up through the homepage.
+* To check it out without creating an account, sign in as a guest user using
+>> Username: demo, Password: demo
+
 
 ## Using the App
 * Add a patient with doctor's name and contact information using the form on the top of the page you enter after signing in. 
@@ -76,8 +61,11 @@ This adds a row with your input to the table below the form, see below.
 <ul>
   <li>Node.js + Express.js (web server)</li>
   <li>MongoDB (database)</li>
-  <li><a href="https://mochajs.org/">Mocha</a> + <a href="http://chaijs.com/">Chai</a> (testing)</li>
-  <li>Continuous integration and deployment with <a href="https://travis-ci.org/">Travis CI</a></li>
+  <li>Mocha + Chai (testing)</li>
+  <li>Continuous integration and deployment with Travis CI - View the build status below</li>
+[![Build Status](https://travis-ci.org/roshnikutty/med-aid.svg?branch=master)]
+(https://travis-ci.org/roshnikutty/med-aid)
+
 </ul>
 <h3>Responsive</h3>
 <ul>
@@ -89,3 +77,25 @@ This adds a row with your input to the table below the form, see below.
   <li>
   JWT (<a href = "https://www.npmjs.com/package/passport-jwt">JSON Web Token</a>) is the <a href="http://passportjs.org/">Passport</a> strategy used to authenticate and provide access to authorized users.</li>
 </ul>
+
+
+
+
+
+## Steps to run locally
+### Install
+```
+>   git clone https://github.com/roshnikutty/med-aid.git
+>   cd med-aid
+>   npm install
+```
+### Launch
+```
+>   npm start
+```
+Then open [`localhost:8000`](http://localhost:8000) in a browser.
+
+### Test
+```
+>   npm run test
+```
