@@ -62,9 +62,7 @@ This adds a row with your input to the table below the form, see below.
   <li>Node.js + Express.js (web server)</li>
   <li>MongoDB (database)</li>
   <li>Mocha + Chai (testing)</li>
-  <li>Continuous integration and deployment with Travis CI - View the build status below</li>
-[![Build Status](https://travis-ci.org/roshnikutty/med-aid.svg?branch=master)]
-(https://travis-ci.org/roshnikutty/med-aid)
+  <li>Continuous integration and deployment with Travis CI - View the <a href = "https://travis-ci.org/roshnikutty/med-aid">build status</a> below</li>
 
 </ul>
 <h3>Responsive</h3>
