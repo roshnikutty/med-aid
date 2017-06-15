@@ -18,23 +18,26 @@ My app here is a start to solve this by providing a place to
 ## Using the App
 * Add a patient with doctor's name and contact information using the form on the top of the page you enter after signing in. 
 This adds a row with your input to the table below the form, see below.
-![patientadded](https://github.com/roshnikutty/Multi_cuisine_restaurant_search_sort/blob/master/images/input_zip.png)
+![patientadded](https://github.com/roshnikutty/med-aid/blob/master/public/images/added_patient.png)
 
 
 * Add med. record: For each patient, you can add a record using the 'Add record' button. This opens a form on the same row prompting you to add in Date, Time (as a string), Symptoms and Medication. The first two here are mandatory fields.
-![inpzip](https://github.com/roshnikutty/Multi_cuisine_restaurant_search_sort/blob/master/images/input_zip.png)
+![addrecordform](https://github.com/roshnikutty/med-aid/blob/master/public/images/add_med_record_form.png)
 
+A row with this data gets added in:
+![rowadded](https://github.com/roshnikutty/med-aid/blob/master/public/images/added_record.png)
+
+Here's a view with mutiple records:
+![multiplerecords](https://github.com/roshnikutty/med-aid/blob/master/public/images/multiple%20records.png)
 
 * Retrieve data: You can click on the patient row to see a list of the patient's medical log.
-![inpzip](https://github.com/roshnikutty/Multi_cuisine_restaurant_search_sort/blob/master/images/input_zip.png)
 
 
 * Delete a record: You can hit the 'Delete record' button to take out that row of data you no longer wish to retain. After deleting, clicking on that patient's row will no longer bring up the record you deleted.
-![inpzip](https://github.com/roshnikutty/Multi_cuisine_restaurant_search_sort/blob/master/images/input_zip.png)
 
 
 * Update a patient: shows a form with inputs for Patient name, doctor and doctor's contact info. All are mandatory fields.
-![inpzip](https://github.com/roshnikutty/Multi_cuisine_restaurant_search_sort/blob/master/images/input_zip.png)
+![updatepatientform](https://github.com/roshnikutty/med-aid/blob/master/public/images/update_patient_form.png)
 
 
 * Delete a patient: Clicking 'Delete patient' will take out the patient's entry. You will no longer see that patient's row after the page is refreshed.
