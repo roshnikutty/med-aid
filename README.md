@@ -53,7 +53,7 @@ This adds a row with your input to the table below the form, see below.
 <h3>Front End</h3>
 <ul>
   <li>HTML5</li>
-  <li>CSS3</li>
+  <li>CSS3 - Bootstrap</li>
   <li>JavaScript</li>
   <li>jQuery</li>
 </ul>
@@ -76,7 +76,21 @@ This adds a row with your input to the table below the form, see below.
   JWT (<a href = "https://www.npmjs.com/package/passport-jwt">JSON Web Token</a>) is the Passport strategy I used to authenticate and provide access to authorized users.</li>
 </ul>
 
+## API routes
+1. GET
+    * /patients
+    * /patients/:patient_id/histories
 
+2. POST
+    * /patients
+    * /patients/:patient_id/histories
+
+3. UPDATE
+    * /patients/:patient_id
+    * /patients/:patient_id/:histories_id (Implemented back-end and tested it. Front-end will be implemented in Version 2 of the app)
+4. DELETE
+    * /patients/:patient_id
+    * /patients/:patient_id/:history_id
 
 
 
@@ -97,3 +111,9 @@ Then open [`localhost:8000`](http://localhost:8000) in a browser.
 ```
 >   npm run test
 ```
+
+## This is version 1
+In version 2 of these app, I plan to implement:
+* App should send out reminders for next medication and dose 
+* App should export data and email to the doctor. 
+* App should send out preparatory reminders for change in season or time for vaccinations.
