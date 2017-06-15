@@ -43,10 +43,10 @@ This adds a row with your input to the table below the form, see below.
 * Add med. record: For each patient, you can add a record using the 'Add record' button. This opens a form on the same row prompting you to add in Date, Time (as a string), Symptoms and Medication. The first two here are mandatory fields.
 ![addrecordform](https://github.com/roshnikutty/med-aid/blob/master/public/images/add_med_record_form.png)
 
-A row with this data gets added in:
+>>A row with this data gets added in:
 ![rowadded](https://github.com/roshnikutty/med-aid/blob/master/public/images/added_record.png)
 
-Here's a view with mutiple records:
+>>Here's a view with mutiple records:
 ![multiplerecords](https://github.com/roshnikutty/med-aid/blob/master/public/images/multiple%20records.png)
 
 * Retrieve data: Click on the patient row to see a list of the patient's medical log.
@@ -58,7 +58,7 @@ Here's a view with mutiple records:
 * Update a patient: shows a form with inputs for Patient name, doctor and doctor's contact info. All are mandatory fields.
 ![updatebutton](https://github.com/roshnikutty/med-aid/blob/master/public/images/update_patient_hover.png)
 
-Form to add in updated data
+>>Form to add in updated data
 ![updatepatientform](https://github.com/roshnikutty/med-aid/blob/master/public/images/update_patient_form.png)
 
 
