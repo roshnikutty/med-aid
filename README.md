@@ -7,9 +7,28 @@ Or as a diabetic needed to keep track of your blood sugar levels, and medication
 It gets confusing if you memorize them, or you loose track of where in all the commotion you left your notepad with these details.
 
 ## Solution
-My app here is a start to solve this by providing a place to 
+My solution is a RESTful app that uses basic CRUD oprations to achive some sanity around this. 
+It is a start to solve this by providing a place to 
 * add in your patients with their doctor and doctor's contact information. 
 * for each patient, keep a log of symptoms and medication.
+
+## Steps to run locally
+### Install
+```
+>   git clone https://github.com/roshnikutty/med-aid.git
+>   cd med-aid
+>   npm install
+```
+### Launch
+```
+>   npm start
+```
+Then open [`localhost:8000`](http://localhost:8000) in a browser.
+
+### Test
+```
+>   npm run test
+```
 
 ## How do you sign in/sign up?
 * If you don't have an account, sign up through the homepage.
@@ -41,3 +60,29 @@ Here's a view with mutiple records:
 
 
 * Delete a patient: Clicking 'Delete patient' will take out the patient's entry. You will no longer see that patient's row after the page is refreshed.
+
+<h2>Technology</h2>
+<h3>Front End</h3>
+<ul>
+  <li>HTML5</li>
+  <li>CSS3</li>
+  <li>JavaScript</li>
+  <li>jQuery</li>
+</ul>
+<h3>Back End</h3>
+<ul>
+  <li>Node.js + Express.js (web server)</li>
+  <li>MongoDB (database)</li>
+  <li><a href="https://mochajs.org/">Mocha</a> + <a href="http://chaijs.com/">Chai</a> (testing)</li>
+  <li>Continuous integration and deployment with <a href="https://travis-ci.org/">Travis CI</a></li>
+</ul>
+<h3>Responsive</h3>
+<ul>
+  <li>Styling the app is a work in progress, but it has basic responsive features enabled to view on all screen sizes.</li>
+</ul>
+<h3>Security</h3>
+<ul>
+  <li>User passwords are encrypted using <a href="https://github.com/dcodeIO/bcrypt.js">bcrypt.js</a>.</li>
+  <li>
+  JWT (<a href = "https://www.npmjs.com/package/passport-jwt">JSON Web Token</a>) is the <a href="http://passportjs.org/">Passport</a> strategy used to authenticate and provide access to authorized users.</li>
+</ul>

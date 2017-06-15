@@ -31,18 +31,3 @@ module.exports = function() {
         }
     };
 };
-
-// module.exports.authenticate = function(req, res) {
-//     var user = {
-//         username: "test",
-//         firstName: "firstNameTest",
-//         lastName: "lastNameTest"
-//     }
-//     var token = jwt.sign(user, process.env.SECRET_KEYSECRET_KEY, {
-//         espiresIn: 9000
-//     });
-//     res.json({
-//         success: true,
-//         token: token
-//     })
-// }
