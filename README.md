@@ -1,13 +1,13 @@
 # Med-aid
 
 ## Purpose and vision
-Have you ever had to keep a detailed log of your family's medical history? To go and narrate to your child's pediatrician all the medication, fever temperatures and other symptoms that you have kept track of in the last 48 hours? And what if there are two sick children to take care of at the same time?  
-Or as a diabetic needed to keep track of your blood sugar levels, and medication dosage?
+Have you ever had to keep a detailed log of your family's medical history? To go, and narrate to your child's pediatrician all the medication,fever temperatures and other symptoms that you have kept track of in the last 48 hours? And what if there are two sick children to take care of at the same time?  
+Or as a diabetic, needed to keep track of your blood sugar levels and medication dosage?
 
-It gets confusing if you memorize them, or you loose track of where in all the commotion you left your notepad with these details.
+It gets confusing if you memorize them, or you loose track of where, in all the commotion, you left your notepad with these details.
 
 ## Solution
-My solution is a RESTful app that uses basic CRUD oprations to achive some sanity around this. 
+My solution is a RESTful app that uses basic CRUD operations to achieve some sanity around this. 
 It is a start to solve this by providing a place to 
 * add in your patients with their doctor and doctor's contact information. 
 * for each patient, keep a log of symptoms and medication.
