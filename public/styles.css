@@ -209,9 +209,11 @@ button.js-delete, button.js-update {
         text-align: center;
     }
 
-    .js-patient.row-label{
+    .row-label{
         display: block;
         color: steelblue;
         font-weight: bold;
+        margin-top: 15px;
     }
+
 }

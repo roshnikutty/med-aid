@@ -2,9 +2,9 @@ function patientItemTemplate(id) {
   return `<div data-id="${id}"  class="row patient-row">` +
     '<div class = "col-md-12">' +
     '<div class = "row selectable"> '
-    + '<div class="col-md-3 js-patient"><span class = "row-label">Patient </span></div>' +
-    '<div class="col-md-3 js-doctor"><span class = "row-label">Doctor </span></div>' +
-    '<div class="col-md-3 js-contact"><span class = "row-label">Contact </span></div>' +
+    + '<div class="col-md-3 js-patient"></div>' +
+    '<div class="col-md-3 js-doctor"></div>' +
+    '<div class="col-md-3 js-contact"></div>' +
     '<div class="col-md-3 js-patient-controls">' +
     '<div><button class="js-update"> Update patient' +
     '</button>' +
@@ -129,9 +129,14 @@ function getAndDisplayPatientList() {
       let itemElements = items.patients.map(function (item) {
         let element = $(patientItemTemplate(item.patient_id));
         // element.attr('id', item.patient_id);
+
         element.find('.js-patient').text(item.patient);
         element.find('.js-doctor').text(item.doctor);
         element.find('.js-contact').text(item.contact);
+        element.find('.js-patient').prepend("<span class = 'row-label'>Patient </span>");
+        element.find('.js-doctor').prepend("<span class = 'row-label'>Doctor </span>");
+        element.find('.js-contact').prepend("<span class = 'row-label'>Contact </span>");
+
 
         //Update Patient button function
         element.find('.js-update').click((event) => {
