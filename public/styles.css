@@ -31,7 +31,6 @@ body {
 }
 
 h5{
-    /*font-size: 2em;*/
     padding-top: 20px;
     margin-left: 145px;
     font-weight: lighter;
@@ -39,22 +38,10 @@ h5{
 }
 
 button, input {   
-    /*clear: left;*/
-    /*padding: 15px;*/
-    /*border: 2px solid lightgrey;*/
     max-width: 150px;
     display: inline-block;
     margin-top: 20px;
 }
-
-/*input {
-    border: 2px solid lightgrey;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 3px;
-    background-color: #f4f5f7;
-    width: 286px;
-}*/
 
 button {
     background: rgba(213, 0, 0, 0.53);
@@ -66,7 +53,6 @@ button {
     width: 300px;
     margin-bottom: 10px;
     display: inline-block;
-    /*margin-left: 50px;*/
 }
 
 button:hover{
@@ -75,7 +61,6 @@ button:hover{
 
 .js-entry-output{
     display: none;
-    /*border: 1px orangered solid;*/
     margin: auto;
 }
 
@@ -109,7 +94,6 @@ button:hover{
     background-color: white;
     padding-top: 15px;
     padding-bottom: 15px;
-    /*margin-bottom: 10px;*/
     color:grey;
     cursor: pointer;
     box-shadow: 2px 2px 7px #888888;
@@ -195,8 +179,21 @@ button.js-delete, button.js-update {
     background: white;
     box-shadow: 10px -1px 20px rgba(50,50,50,.95);
 }
+.built-by {
+    text-align: center;
+    color:darkgrey;
+    margin-top: 30px;
+}
+.built-by a {
+    text-align: center;
+    color:darkgrey;
+}
 .row-label{
     display: none;
+}
+
+.mortar{
+    width: 20px;
 }
 
 @media only screen and (max-width: 992px) {
