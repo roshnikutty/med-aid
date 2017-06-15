@@ -49,13 +49,16 @@ A row with this data gets added in:
 Here's a view with mutiple records:
 ![multiplerecords](https://github.com/roshnikutty/med-aid/blob/master/public/images/multiple%20records.png)
 
-* Retrieve data: You can click on the patient row to see a list of the patient's medical log.
+* Retrieve data: Click on the patient row to see a list of the patient's medical log.
 
 
-* Delete a record: You can hit the 'Delete record' button to take out that row of data you no longer wish to retain. After deleting, clicking on that patient's row will no longer bring up the record you deleted.
+* Delete a record: Click the 'Delete record' button to take out that row of data you no longer wish to retain. After deleting, clicking on that patient's row will no longer bring up the record you deleted.
 
 
 * Update a patient: shows a form with inputs for Patient name, doctor and doctor's contact info. All are mandatory fields.
+![updatebutton](https://github.com/roshnikutty/med-aid/blob/master/public/images/update_patient_hover.png)
+
+Form to add in updated data
 ![updatepatientform](https://github.com/roshnikutty/med-aid/blob/master/public/images/update_patient_form.png)
 
 
