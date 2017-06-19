@@ -198,7 +198,11 @@ button.js-delete, button.js-update {
 
 .guest {
     color: rgba(213, 0, 0, 0.53);
-    padding-top: 10px;
+    padding: 10px;
+}
+
+.patient-row:hover {
+    background-color:#E9E8EE;
 }
 @media only screen and (max-width: 992px) {
     .header-row {
