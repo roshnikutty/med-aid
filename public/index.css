@@ -22,10 +22,18 @@ body{
   max-height: 100px;
   width: auto;
   margin-left: 35%;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
 .loggedInMessage {
   color: green;
+}
+
+.left>p{
+  padding-top:10px;
+}
+
+#cutomize_header{
+  padding-top:20px;
 }

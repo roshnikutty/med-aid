@@ -204,6 +204,22 @@ button.js-delete, button.js-update {
 .patient-row:hover {
     background-color:#E9E8EE;
 }
+
+.js-add-entry-btn {
+    margin-left:15px;
+}
+
+.row.history-row {
+    padding-top: 14px;
+}
+
+button.js-history-delete {
+    margin-top: 0px;
+}
+
+input#date_time.blank.date_time{
+    margin-left: 22px;
+}
 @media only screen and (max-width: 992px) {
     .header-row {
         display:none;

@@ -1,57 +1,68 @@
 function patientItemTemplate(id) {
-  return `<div data-id="${id}"  class="row patient-row">` +
-    '<div class = "col-md-12">' +
-    '<div class = "row selectable"> '
-    + '<div class="col-md-3 js-patient"></div>' +
-    '<div class="col-md-3 js-doctor"></div>' +
-    '<div class="col-md-3 js-contact"></div>' +
-    '<div class="col-md-3 js-patient-controls">' +
-    '<div><button class="js-update"> Update patient' +
-    '</button>' +
-    '<button class="js-delete">' +
-    '<span class="button-label">Delete patient</span>' +
-    '</button></div>' +
-    '</div>' +
-    '<button class="js-add-history">' +
-    '<span class="button-label">Add record</span>' +
-    '</button>' +
-    '</div>' +
-    '<div class="row js-entry-output">' +
-    '</div>' +
-    '</div>'
-    + '</div>'
+  return `<div data-id="${id}"  class="row patient-row">
+    <div class = "col-md-12">
+      <div class = "row selectable">
+        <div class="col-md-3 js-patient"></div>
+        <div class="col-md-3 js-doctor"></div>
+        <div class="col-md-3 js-contact"></div>
+        <div class="col-md-3 js-patient-controls">
+            <div>
+              <button class="js-update"> 
+                Update patient
+              </button> 
+              <button class="js-delete">
+                <span class="button-label">Delete patient</span>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row js-entry-output"></div>
+      </div>
+      <div class="row js-add-record">
+        <div class="col-xs-12">
+         <button class="js-add-history">Add Record
+          </button>
+        </div>
+      </div>
+      <div class="row js-add-record-area">
+      </div>
+    </div>`
 }
 let newMedRecordTemplate = (
-  '<form name="js-history-form" action="" method="post">' +
-  '<div class="row">' +
-  '<div class="col-md-3">' +
-  '<div>' +
-  '<input type="text" class="blank date_time" name="date_time" type="text" id="date_time" placeholder="Date, Time" required>' +
-  '</div>' +
-  '</div>' +
-  '<div class="col-md-3">' +
-  '<div>' +
-  '<input type="text" class="blank symptoms" name="symptoms" type="text" id="symptoms" placeholder="Symptoms">' +
-  '</div>' +
-  '</div>' +
-  '<div class="col-md-3">' +
-  '<div>' +
-  '<input type="text" class="blank meds" name="meds" type="text" id="meds" placeholder="Medication">' +
-  '</div>' +
-  '</div>' +
-  '<div class="col-md-3">' +
-  '<button class = "js-save"> Save' +
-  '</button>' +
-  '</div>' +
-  '</div>' +
-  '</form>'
+  `<br>
+  <form id="js-history-form" name="js-history-form" action="" method="post">
+    <div class="row">
+      <div class="col-md-3">
+        <div>
+          <input type="text" class="blank date_time" name="date_time" type="text" id="date_time" placeholder="Date, Time" required>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+          <input type="text" class="blank symptoms" name="symptoms" type="text" id="symptoms" placeholder="Symptoms">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+          <input type="text" class="blank meds" name="meds" type="text" id="meds" placeholder="Medication">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button class = "js-save"> Save
+        </button>
+        <button class = "js-cancel-record"> Cancel
+        </button>
+      </div>
+    </div>
+  </form>`
 );
 
 let updatePatientTemplate = ('<div>' +
   '<form name="js-update-patient-form" action="" method="put">' +
   ' <div class="row">' +
   '<div class="col-md-3">' +
-  '<input type="text" class="blank update-patient" name="update-patient" type="text" id="update-patient" placeholder="Patient\'s name" required>' +
+  '<input type="text" class="blank update-patient" name="update-patient" type="text" id="update-patient" placeholder="Patient\'s name" >' +
   '</div>' +
   '<div class="col-md-3">' +
   '<input type="text" class="blank update-doctor" name="update-doctor" type="text" id="update-doctor" placeholder="Doctor">' +
@@ -62,6 +73,8 @@ let updatePatientTemplate = ('<div>' +
   '<div class="col-md-3">' +
   '<button class = "js-save-update"> Save' +
   '</button>' +
+  '<button class = "js-cancel-update"> Cancel' +
+  '</button>' +
   '</div>' +
   '</div>' +
   '</form>' +
@@ -69,17 +82,15 @@ let updatePatientTemplate = ('<div>' +
 );
 
 function historyItemTemplate(id) {
-  return `<div data-id="${id}"  class="row history-row">` +
-    '<div class="col-md-3 js-history-date_time"></div>' +
-    '<div class="col-md-3 js-history-symptoms"></div>' +
-    '<div class="col-md-3 js-history-meds"></div>' +
-    '<div class="col-md-3 js-history-controls">' +
-    '<div>' +
-    // '<button class="js-history-update"> Update record' +
-    // '</button>' +
-    '<button class="js-history-delete">Delete record</button>' +
-    '</div>' +
-    '</div>'
+  return `<div data-id="${id}"  class="row history-row">
+          <div class="col-md-3 js-history-date_time"></div>
+          <div class="col-md-3 js-history-symptoms"></div>
+          <div class="col-md-3 js-history-meds"></div>
+          <div class="col-md-3 js-history-controls">
+            <div>
+              <button class="js-history-delete">Delete record</button>
+            </div>
+          </div>`;
 }
 
 
@@ -141,12 +152,13 @@ function getAndDisplayPatientList() {
         //Update Patient button function
         element.find('.js-update').click((event) => {
           $(event.target).closest('.patient-row').append(updatePatientTemplate);
-          $(event.target).closest('.js-patient-controls').siblings('.js-add-history').hide();
+          $(event.target).closest('.col-md-12').siblings('.js-add-record').hide();
           $(event.target).closest('.js-patient-controls').hide();
-          //Clicking Save-Updates
+
+          //Saving Updates
           $(".js-patient-output").on("click", ".js-save-update", function (event) {
             //get updated patient data from form into an object
-            event.preventDefault();
+            event.preventDefault(event);
             let updatedPatient = {
               patient: $(".update-patient").val(),
               doctor: $(".update-doctor").val(),
@@ -156,6 +168,14 @@ function getAndDisplayPatientList() {
             $('.js-patient-output').empty();
             getAndDisplayPatientList();
           });
+        });
+
+        //Cancel updating the patient
+        $(".js-patient-output").on("click", "js-cancel-update", function (event) {
+          //hide update form and show Update, Delete and Add record button
+          event.preventDefault(event);
+          $('.js-patient-output').empty();
+          getAndDisplayPatientList();
         });
 
         //Delete Patient button function
@@ -174,11 +194,11 @@ function getAndDisplayPatientList() {
   });
 }
 
-//add medical record make post request
+//add medical record, make post request
 $("body").on("click", ".js-save", function (event) {
   let retrieveID = $(this).parents(".patient-row").data("id");
   console.log(retrieveID);
-  event.preventDefault();
+  event.preventDefault(event);
   addHistoryItem($(".date_time").val(), $(".symptoms").val(), $(".meds").val());        //Add form input to historyState attay
   addHistory(addhistoryState[0], retrieveID);                                         //new history info is sent on a POST req. to server
   $(".js-save").hide();
@@ -187,7 +207,18 @@ $("body").on("click", ".js-save", function (event) {
   $(".js-add-history").show();
 });
 
+//Cancel medical record entry form
+$("body").on("click", ".js-cancel-record", function (event) {
+  event.preventDefault(event);
+  $(this).closest("#js-history-form").find(".date_time").hide();
+  $(this).closest("#js-history-form").find(".symptoms").hide();
+  $(this).closest("#js-history-form").find(".meds").hide();
+  $(this).siblings(".js-save").hide();
+  $(this).closest(".patient-row").find(".js-patient-controls").show();
+  $(this).closest(".patient-row").find(".js-add-history").show();
 
+  $(this).hide();
+});
 
 function addPatient(newPatient) {
   let token = Cookies.get('token');
@@ -226,23 +257,26 @@ function updatePatientEntry(updatedPatient, patient_id) {
 
 function deletePatientEntry(patientId) {
   let token = Cookies.get('token');
-  $.ajax({
-    url: "/patients/" + patientId,
-    beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
-    method: "DELETE",
-    data: {},
-    contentType: 'application/json',
-    dataType: 'text',                                                 //boolean output
-    success: function (data) {
-      console.log("Patient deleted successfully!");
-    }
-  });
+  if (confirm("Are you sure?") === true) {
+    $.ajax({
+      url: "/patients/" + patientId,
+      beforeSend: (req) => { req.setRequestHeader("Authorization", `JWT ${token}`) },
+      method: "DELETE",
+      data: {},
+      contentType: 'application/json',
+      dataType: 'text',                                                 //boolean output
+      success: function (data) {
+        console.log("Patient deleted successfully!");
+      }
+    });
+  }
 }
 
 
 function addHistory(newHistory, patient_id) {
   // console.log(newHistory);
   let token = Cookies.get('token');
+  console.log(newHistory)
   $.ajax({
     method: "POST",
     url: "/patients/" + patient_id + "/histories",
@@ -257,16 +291,19 @@ function addHistory(newHistory, patient_id) {
 }
 
 //Show medical record form
-$(".js-patient-output").on("click", ".js-add-history", function () {
-  event.preventDefault();
-  $(this).parent().append($(newMedRecordTemplate));   //reveal a form to input date/time, symptoms and medications
-  $(event.target).parent().parent().find(".js-patient-controls").hide();
+$(".js-patient-output").on("click", ".js-add-history", function (event) {
+  event.preventDefault(event);
+  $(this).closest(".js-add-record").siblings(".col-md-12").find(".js-patient-controls").hide();
+
+  //reveal a form to input date/time, symptoms and medications
+  $(".js-add-record-area").empty();    //remove any existing child elements in the form area
+  $(this).closest(".js-add-record").siblings(".js-add-record-area").append($(newMedRecordTemplate));
   $(this).hide();
 });
 
 //Get a patient's medical record
-$(".js-patient-output").on("click", ".selectable", function () {
-  event.preventDefault();
+$(".js-patient-output").on("click", ".selectable", function (event) {
+  event.preventDefault(event);
   let parent = $(this).closest(".patient-row");
   let active = $(parent).find(".js-entry-output.active").length;
   $(".js-entry-output.active").toggleClass("active");
@@ -296,8 +333,8 @@ function getAndDisplayPatientHistory(patientsId, patientRow) {
 }
 
 //Delete medical record
-$(".js-patient-output").on("click", ".js-history-delete", function () {
-  event.preventDefault();
+$(".js-patient-output").on("click", ".js-history-delete", function (event) {
+  event.preventDefault(event);
   let retrievePatientID = $(this).parents(".patient-row").data("id");
   let retrieveHistoryID = $(this).parents(".history-row").data("id");
   deleteHistory(retrievePatientID, retrieveHistoryID);
@@ -337,5 +374,13 @@ function render() {
 
   });
 }
+
+// $(".logo").click((event)=>{
+//   event.preventDefault(event);
+
+// })
+
+
+
 
 $(getAndDisplayPatientList);
